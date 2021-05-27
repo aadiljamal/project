@@ -1,0 +1,4 @@
+pandas
+PIL
+streamlit
+streamlit_drawable_canvas
