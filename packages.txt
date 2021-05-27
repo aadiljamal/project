@@ -1,5 +1,0 @@
-streamlit
-streamlit_drawable_canvas
-pandas
-numpy
-pil
