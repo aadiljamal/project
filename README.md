@@ -1,2 +1,2 @@
 # project
-sketch reocngnition of multiple objects from one image
+sketch reocngnition (webapp)
