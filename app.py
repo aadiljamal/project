@@ -27,7 +27,7 @@ canvas_result = st_canvas(
 )
 
 image_data = canvas_result.image_data
-st.write(image_data)
+#st.write(image_data)
 
 # Do something interesting with the image data and paths
 #if canvas_result.image_data is not None:
