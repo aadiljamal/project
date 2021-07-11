@@ -1,6 +1,8 @@
 import pandas as pd
 #from PIL import Image
 import streamlit as st
+st.color_picker("Background color hex: ", "#eee", key="main")
+st.sidebar.color_picker("Background color hex: ", "#eee", key="sidebar")
 from streamlit_drawable_canvas import st_canvas
 
 # Specify canvas parameters in application
