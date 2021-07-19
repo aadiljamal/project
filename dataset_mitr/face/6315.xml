@@ -1,0 +1,26 @@
+<annotation>
+	<folder>face</folder>
+	<filename>6315.png</filename>
+	<path>/home/aadil/Desktop/project/dataset_mitr/face/6315.png</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1111</width>
+		<height>1111</height>
+		<depth>1</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>face</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>141</xmin>
+			<ymin>155</ymin>
+			<xmax>998</xmax>
+			<ymax>941</ymax>
+		</bndbox>
+	</object>
+</annotation>

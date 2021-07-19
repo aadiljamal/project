@@ -1,5 +1,6 @@
 import pandas as pd
 from PIL import Image
+import numpy as np
 import streamlit as st
 from streamlit_drawable_canvas import st_canvas
 
@@ -27,8 +28,18 @@ canvas_result = st_canvas(
 )
 
 image_data = canvas_result.image_data
-st.write(image_data)
+jsonformat = canvas_result.json_data
+#st.write(jsonformat)
+#st.write(image_data)
+rescaled = (255.0 / image_data.max() * (image_data - image_data.min())).astype(np.uint8)
+im = Image.fromarray(rescaled)
+im.save('test.png')
+directory = '/home/aadil/Desktop'
+file = open(directory + 'doodle.npy','w')
 
+file.write('image_data')
+
+file.close()
 # Do something interesting with the image data and paths
 #if canvas_result.image_data is not None:
     #st.image(canvas_result.image_data)
