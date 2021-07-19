@@ -1,3 +1,5 @@
 pandas==1.2.3
 streamlit==0.82.0
 streamlit_drawable_canvas==0.7.0
+numpy
+PIL
