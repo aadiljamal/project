@@ -33,13 +33,14 @@ jsonformat = canvas_result.json_data
 #st.write(image_data)
 rescaled = (255.0 / image_data.max() * (image_data - image_data.min())).astype(np.uint8)
 im = Image.fromarray(rescaled)
-im.save('test.png')
-directory = '/home/aadil/Desktop/project'
-file = open(directory + image_data,'w')
+png_file = im.save('test.png')
+st.write(png_file)
+#directory = '/home/aadil/Desktop/project'
+#file = open(directory + image_data,'w')
 
-file.write('image_data')
+#file.write('image_data')
 
-file.close()
+#file.close()
 # Do something interesting with the image data and paths
 #if canvas_result.image_data is not None:
     #st.image(canvas_result.image_data)
