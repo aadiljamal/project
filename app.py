@@ -34,8 +34,8 @@ canvas_result = st_canvas(
 image_data = canvas_result.image_data
 jsonformat = canvas_result.json_data
 
-#st.write(jsonformat)
-#st.write(image_data)
+# st.write(jsonformat)
+# st.write(image_data)
 # Render the h1 block, contained in a frame of size 200x200.
 components.html(" <html>    <script type="text/javascript">    
     var canvas, ctx, flag = false,
@@ -169,6 +169,7 @@ components.html(" <html>    <script type="text/javascript">
         <input type="button" value="clear" id="clr" size="23" onclick="erase()" style="position:absolute;top:55%;left:15%;">
     </body>
     </html>", width=400, height=400)
+
 """rescaled = (255.0 / image_data.max() * (image_data - image_data.min())).astype(np.uint8)
 im = Image.fromarray(rescaled)
 png_file = im.save('test.png')
