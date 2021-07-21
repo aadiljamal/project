@@ -34,7 +34,7 @@ jsonformat = canvas_result.json_data
 rescaled = (255.0 / image_data.max() * (image_data - image_data.min())).astype(np.uint8)
 im = Image.fromarray(rescaled)
 png_file = im.save('test.png')
-st.write(png_file)
+st.image(png_file)
 #directory = '/home/aadil/Desktop/project'
 #file = open(directory + image_data,'w')
 
