@@ -42,7 +42,7 @@ canvas_result = st_canvas(
 st.button("save drawing")
 image_data = canvas_result.image_data
 #ndarray to array conversion
-firestore_imagedata = image_data.ravel()
+firestore_imagedata = np.squeeze(np.asarray(image_data))
 jsonformat = canvas_result.json_data
 
 if canvas_result.json_data is not None:
