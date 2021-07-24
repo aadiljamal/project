@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "mindreader-302020",
+  "private_key_id": "05b0c58c9e29048d5f9833f1a439050affdfe568",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCWexTwCW1ejvdd\nyusEoMEiA73SaI/mBL0THdu7bb/Wjc6O8x+Bo6STI+SA0KreuD2ISgUA35WZhrLL\nHZxkRkPhnYYpnbIJIwbGkY/P4fhFIdERggoL3jhTjxZNn7XXGo1881piPFUAxQ2d\ns0dVxxG/sBWO76QfKkMw5v4cbPBjPwldt/L25zBlRTG04i8MzY+Z6cG8Eyp3vsn1\nL72LIk20w/Q7fEfOQ3oLKiyH2AExZSff9Uorf5j82LPDWLINcyQ6DIzK/+Yk46dX\nQ/IHA/lV8JJkEKNSJmKLqkcEWNEkWcmzSs/i6IcoCOdD7JHCP5y7nLPngsh1njWJ\nKTd5EN8vAgMBAAECggEALM2Tk84yvoMRel72r0ePiSmVBEb2hRUnGEB9EiZghiht\ndhlD6azHzLlUiNfX7/zp8SCcscBgAbhdlmUIEcDr6AonDk/x2I+RrmBbcZkFesvR\nPAW8KQFuQs6o5M6m7NbuhmPMJtBwvIxu++OLWyosiiaKnKaT9mV2YOJ9iQgUYG/I\n3+I5UxWt7r8JYBuaYpGmIqBrf3z0MwF7cKZqiflOEZ6/CMyfIveLOT7/sgJ3mB7f\nSrlf8EXJl63/t7Wq7HXmqyIDnb9+6EiVrPbdH2cvZ//SzSzSFcLE++Fc82ilZ2vX\n2LA/swX2UAPEp8LWSLGBkVpjrK5Mg3tElQH7nZWjMQKBgQDGTwMGQEDvDvB9S+PP\nEYBgUvrod1cxI1ooJ8QEBEkqdlkEOuU3foemsxytwM3t98nDYN2nQKz/yuRPiSE9\nb/KMJ71GcLOx0h8Be8OvNHpRJ1UdTCDk06HoCrJxSBgWYgoqolitdT/LFvora/dd\n6qC/3uRpCD6WCUDyleFutJA50QKBgQDCQhosh9nf9N7yR/wKKa31zV1ACXxkmP5+\nwfnFL2TIwfCFb6kE3P+sDYyN/WLPOVanDUn+nbv8/BcTNb6JAh7Nz0xEYZ33BHTJ\nyQwprm8/0yVqJtAQHjGhYDJltwlVag621r7D8U0P7bzt+wHoj3vvNkoPQT7Qt2zu\nqkZCv3zI/wKBgQChHgS5CW84Swz837GgxPlmSUTtpjhDBhPz2AsbsFe5lhnQpAEj\nSzvvJkrAqIsnMlDM2mB7yMJFuJQyQpmtDs0jLg5LsrlsWekzDVj5ekt+r9QpT3bS\nM1ex7S75dreLR/A2n1wo4cAIwwxSRw/dUAl2miM9aqNexvnrnfZgOXeMYQKBgQCr\np2ung9gDrUbAgtl1RYVB2dmXt4oi/oqMCe4izxFY0P8veg65jGukZkiYQ5pnkLxA\nW17STiGKmFvvjqMyQBxmMtKq7jN+zoJAuJY10rzdgj/igC+EvpmOhwmhlc76mgAs\nkq/5RyWYeLRk+lOiY//Yznk856ORHTR15SK24qxqkwKBgEZGSOAE+SBVK3PhdF2H\nw0J1Jf4e/Zl6OJPesKNRaYfMxNPIOyjf5QySpdj3Tx9q4u24wGiqojAOGPwFCjf+\nyYDRSIBi285owIcDXm5X7XlyA4+tNAOIV1ZoUFiGi0vDn4VatwY8j0KIaVpQmSC5\nWtAVMIuXyu4u9tla6gEiBja2\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-4i2wk@mindreader-302020.iam.gserviceaccount.com",
+  "client_id": "112012842295422570992",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-4i2wk%40mindreader-302020.iam.gserviceaccount.com"
+}
