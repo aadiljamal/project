@@ -48,7 +48,7 @@ if canvas_result.json_data is not None:
 
 # Then get the data at that reference.
 doc = doc_ref.set({
-    drawing:image_data
+    "drawing":image_data
     })
 
 
