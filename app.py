@@ -11,14 +11,9 @@ from google.cloud import firestore
 db = firestore.Client.from_service_account_json("mindreader-firestore-key.json")
 
 # Create a reference to the image data.
-doc_ref = db.collection("MITR").document("mitr-happy-with-umbrella")
+doc_ref = db.collection("MITR").document("mitr-happy-out-umbrella")
 
-# Then get the data at that reference.
-doc = doc_ref.get()
 
-# Let's see what we got!
-st.write("The id is: ", doc.id)
-st.write("The Drawing data are: ", doc.to_dict())
 
 
 # Specify canvas parameters in application
@@ -51,4 +46,9 @@ jsonformat = canvas_result.json_data
 if canvas_result.json_data is not None:
     st.dataframe(pd.json_normalize(canvas_result.json_data["objects"]))
 
-st.write(image_data)
+# Then get the data at that reference.
+doc = doc_ref.set(image_data)
+
+# Let's see what we got!
+st.write("The id is: ", doc.id)
+st.write("The Drawing data are: ", doc.to_dict())
