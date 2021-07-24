@@ -34,7 +34,7 @@ canvas_result = st_canvas(
     background_color="" if bg_image else bg_color,
     background_image=Image.open(bg_image) if bg_image else None,
     update_streamlit=realtime_update,
-    height=200,
+    height=500,
     drawing_mode=drawing_mode,
     key="canvas",
 )
@@ -42,8 +42,7 @@ canvas_result = st_canvas(
 st.button("save drawing")
 image_data = canvas_result.image_data
 #ndarray to array conversion
-firestore_imagedata = np.squeeze(np.asarray(image_data))
-jsonformat = canvas_result.json_data
+firestore_imagedata = image_data.tolist()
 
 if canvas_result.json_data is not None:
     st.dataframe(pd.json_normalize(canvas_result.json_data["objects"]))
