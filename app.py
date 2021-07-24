@@ -47,7 +47,10 @@ if canvas_result.json_data is not None:
     st.dataframe(pd.json_normalize(canvas_result.json_data["objects"]))
 
 # Then get the data at that reference.
-doc = doc_ref.set(image_data)
+doc = doc_ref.set({
+    drawing:image_data
+    })
+
 
 # Let's see what we got!
 st.write("The id is: ", doc.id)
