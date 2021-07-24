@@ -11,7 +11,7 @@ from google.cloud import firestore
 db = firestore.Client.from_service_account_json("mindreader-firestore-key.json")
 
 # Create a reference to the image data.
-doc_ref = db.collection("MITR").document("mitr-happy-with-umbrella").document("drawing")
+doc_ref = db.collection("MITR").document("mitr-happy-with-umbrella")
 
 # Then get the data at that reference.
 doc = doc_ref.get()
