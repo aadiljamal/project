@@ -42,7 +42,7 @@ canvas_result = st_canvas(
 st.button("save drawing")
 image_data = canvas_result.image_data
 #ndarray to array conversion
-image-data-for-firestore = image_data.ravel()
+image-data-firestore = image_data.ravel()
 jsonformat = canvas_result.json_data
 
 if canvas_result.json_data is not None:
@@ -50,7 +50,7 @@ if canvas_result.json_data is not None:
 
 # Then get the data at that reference.
 doc = doc_ref.set({
-    "drawing":image-data-for-firestore
+    "drawing":image-data-firestore
     })
 
 
