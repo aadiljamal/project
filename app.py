@@ -10,8 +10,8 @@ from google.cloud import firestore
 # Authenticate to Firestore with the JSON account key.
 db = firestore.Client.from_service_account_json("mindreader-firestore-key.json")
 
-# Create a reference to the Google post.
-doc_ref = db.collection("drawing").document("mitr-happy-with-umbrella")
+# Create a reference to the image data.
+doc_ref = db.collection("MITR").document("mitr-happy-with-umbrella").document("drawing")
 
 # Then get the data at that reference.
 doc = doc_ref.get()
@@ -44,6 +44,7 @@ canvas_result = st_canvas(
     key="canvas",
 )
 
+st.button("save drawing")
 image_data = canvas_result.image_data
 jsonformat = canvas_result.json_data
 
