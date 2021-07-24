@@ -4,6 +4,7 @@ import numpy as np
 import streamlit as st
 from streamlit_drawable_canvas import st_canvas
 import streamlit.components.v1 as components  # Import Streamlit
+import google-cloud-firestore
 
 
 
