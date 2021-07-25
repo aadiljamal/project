@@ -5,7 +5,7 @@ import streamlit as st
 from streamlit_drawable_canvas import st_canvas
 import streamlit.components.v1 as components  # Import Streamlit
 from google.cloud import firestore
-
+import json
 
 # Authenticate to Firestore with the JSON account key.
 db = firestore.Client.from_service_account_json("mindreader-firestore-key.json")
@@ -42,15 +42,19 @@ canvas_result = st_canvas(
 st.button("save drawing")
 image_data = canvas_result.image_data
 #ndarray to array conversion
-firestore_imagedata = image_data.tolist()
+#json to array
+
+
+data  = json.loads(canvas_result.json_data)
+#firestore_imagedata = image_data.flatten()
 
 if canvas_result.json_data is not None:
     st.dataframe(pd.json_normalize(canvas_result.json_data["objects"]))
-
+st.write(canvas_result.json_data)
 # Then get the data at that reference.
-doc = doc_ref.set({
-    "drawing":firestore_imagedata 
-    })
+doc = doc_ref.set(
+    "drawing":data 
+    )
 
 
 # Let's see what we got!
