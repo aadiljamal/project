@@ -5,10 +5,46 @@ import streamlit as st
 from streamlit_drawable_canvas import st_canvas
 import streamlit.components.v1 as components  # Import Streamlit
 from google.cloud import firestore
-import firebase_admin
-from firebase_admin import credentials
-import json
-import ast
+from firebase_admin import *
+#Binary Parser
+import struct
+from struct import unpack
+
+
+def unpack_drawing(file_handle):
+    key_id, = unpack('Q', file_handle.read(8))
+    country_code, = unpack('2s', file_handle.read(2))
+    recognized, = unpack('b', file_handle.read(1))
+    timestamp, = unpack('I', file_handle.read(4))
+    n_strokes, = unpack('H', file_handle.read(2))
+    image = []
+    for i in range(n_strokes):
+        n_points, = unpack('H', file_handle.read(2))
+        fmt = str(n_points) + 'B'
+        x = unpack(fmt, file_handle.read(n_points))
+        y = unpack(fmt, file_handle.read(n_points))
+        image.append((x, y))
+
+    return {
+        'key_id': key_id,
+        'country_code': country_code,
+        'recognized': recognized,
+        'timestamp': timestamp,
+        'image': image
+    }
+
+
+def unpack_drawings(filename):
+    with open(filename, 'rb') as f:
+        while True:
+            try:
+                yield unpack_drawing(f)
+            except struct.error:
+                break
+
+
+
+
 
 # Authenticate to Firestore with the JSON account key.
 db = firestore.Client.from_service_account_json("mindreader-firestore-key.json")
@@ -42,13 +78,12 @@ canvas_result = st_canvas(
     key="canvas",
 )
 
-st.button("save drawing")
+#st.button("save drawing")
 image_data = canvas_result.image_data
 #ndarray to array conversion
-#json to array
-
+#json to ndjson
 json_data = canvas_result.json_data
-data  = ast.literal_eval(json_data)
+
 #firestore_imagedata = image_data.flatten()
 
 if canvas_result.json_data is not None:
@@ -56,10 +91,10 @@ if canvas_result.json_data is not None:
 st.write(canvas_result.json_data)
 # Then get the data at that reference.
 doc = doc_ref.set({
-    "drawing":data})
+    "drawing":np.save(image_data)
 
 
 # Let's see what we got!
-#st.write("The id is: ", doc.id)
+st.write("The id is: ", doc.id)
 
-st.write("The Drawing data are: ", np.ndarray((1,4), buffer = doc.to_dict(), offset = np.int_().itemsize,           dtype = int))
+st.write("The Drawing data are: ",  doc.to_dict())
