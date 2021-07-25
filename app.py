@@ -45,7 +45,7 @@ image_data = canvas_result.image_data
 #json to array
 
 json_data = canvas_result.json_data
-data  = json.dumps(json_data)
+data  = json.load(json_data)
 #firestore_imagedata = image_data.flatten()
 
 if canvas_result.json_data is not None:
