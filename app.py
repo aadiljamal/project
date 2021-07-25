@@ -97,4 +97,4 @@ doc = doc_ref.set({
 # Let's see what we got!
 #st.write("The id is: ", doc.id)
 
-st.write("The Drawing data are: ",  doc.to_dict())
+#st.write("The Drawing data are: ",  doc.to_dict())
