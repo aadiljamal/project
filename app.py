@@ -57,6 +57,6 @@ doc = doc_ref.set({
 
 
 # Let's see what we got!
-st.write("The id is: ", doc.id)
+#st.write("The id is: ", doc.id)
 
 st.write("The Drawing data are: ", np.ndarray((1,4), buffer = doc.to_dict(), offset = np.int_().itemsize,           dtype = int))
