@@ -10,6 +10,7 @@ from firebase_admin import *
 #Binary Parser
 import struct
 from struct import unpack
+import json
 
 
 def unpack_drawing(file_handle):
@@ -49,7 +50,7 @@ def unpack_drawings(filename):
 
 # Authenticate to Firestore with the JSON account key.
 #db = firestore.Client.from_service_account_json("mindreader-firestore-key.json")
-import json
+
 key_dict = json.loads(st.secrets["textkey"])
 creds = service_account.Credentials.from_service_account_info(key_dict)
 db = firestore.Client(credentials=creds, project="project")
