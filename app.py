@@ -44,17 +44,16 @@ image_data = canvas_result.image_data
 #ndarray to array conversion
 #json to array
 
-
-data  = json.loads(canvas_result.json_data)
+json_data = canvas_result.json_data
+data  = json.dumps(json_data)
 #firestore_imagedata = image_data.flatten()
 
 if canvas_result.json_data is not None:
     st.dataframe(pd.json_normalize(canvas_result.json_data["objects"]))
 st.write(canvas_result.json_data)
 # Then get the data at that reference.
-doc = doc_ref.set(
-    "drawing":data 
-    )
+doc = doc_ref.set({
+    "drawing":data})
 
 
 # Let's see what we got!
