@@ -5,7 +5,10 @@ import streamlit as st
 from streamlit_drawable_canvas import st_canvas
 import streamlit.components.v1 as components  # Import Streamlit
 from google.cloud import firestore
+import firebase_admin
+from firebase_admin import credentials
 import json
+import ast
 
 # Authenticate to Firestore with the JSON account key.
 db = firestore.Client.from_service_account_json("mindreader-firestore-key.json")
@@ -45,7 +48,7 @@ image_data = canvas_result.image_data
 #json to array
 
 json_data = canvas_result.json_data
-data  = json.dumps(json_data)
+data  = ast.literal_eval(json_data)
 #firestore_imagedata = image_data.flatten()
 
 if canvas_result.json_data is not None:
