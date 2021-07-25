@@ -96,7 +96,7 @@ if canvas_result.json_data is not None:
     st.dataframe(pd.json_normalize(canvas_result.json_data["objects"]))
 st.write(canvas_result.json_data)
 # Then get the data at that reference.
-firestore_data = np.save('gs://mindreader-302020.appspot.com/MITR_dataset/test', image_data, allow_pickle=True, fix_imports=True)
+firestore_data = image_data.dumps()
 doc = doc_ref.set( 
     { 
     "drawing":firestore_data
@@ -105,4 +105,4 @@ doc = doc_ref.set(
 
 # Let's see what we got!
 #st.write("The id is: ", doc.id)
-st.write("The Drawing data are: ",  doc)  
+st.write("The Drawing data are: ",  doc.to_dict())  
