@@ -1,3 +1,4 @@
+from numpy.lib.npyio import NpzFile
 import pandas as pd
 from PIL import Image
 import numpy as np
@@ -47,8 +48,11 @@ def unpack_drawings(filename):
 
 
 # Authenticate to Firestore with the JSON account key.
-db = firestore.Client.from_service_account_json("mindreader-firestore-key.json")
-
+#db = firestore.Client.from_service_account_json("mindreader-firestore-key.json")
+import json
+key_dict = json.loads(st.secrets["textkey"])
+creds = service_account.Credentials.from_service_account_info(key_dict)
+db = firestore.Client(credentials=creds, project="project")
 # Create a reference to the image data.
 doc_ref = db.collection("MITR").document("mitr-happy-without-umbrella")
 
@@ -90,11 +94,13 @@ if canvas_result.json_data is not None:
     st.dataframe(pd.json_normalize(canvas_result.json_data["objects"]))
 st.write(canvas_result.json_data)
 # Then get the data at that reference.
-doc = doc_ref.set({
-    "drawing":np.save(image_data)
-
+firestore_data = np.save('/home/aadil/Desktop/project/data/test_data', image_data, allow_pickle=True, fix_imports=True)
+doc = doc_ref.set( 
+    { 
+    "drawing":firestore_data
+    }
+)    
 
 # Let's see what we got!
 #st.write("The id is: ", doc.id)
-
-#st.write("The Drawing data are: ",  doc.to_dict())
+st.write("The Drawing data are: ",  doc)  
