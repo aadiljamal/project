@@ -5,5 +5,4 @@ numpy
 pillow==8.2.0
 google-cloud-firestore==2.2.0
 jsonlib==1.6.1
-AST==0.0.2
 firebase_admin
