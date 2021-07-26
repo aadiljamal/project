@@ -14,7 +14,7 @@ import json
 from google.oauth2 import service_account
 
 
-def unpack_drawing(file_handle):
+"""def unpack_drawing(file_handle):
     key_id, = unpack('Q', file_handle.read(8))
     country_code, = unpack('2s', file_handle.read(2))
     recognized, = unpack('b', file_handle.read(1))
@@ -46,7 +46,7 @@ def unpack_drawings(filename):
                 break
 
 
-
+"""
 
 
 # Authenticate to Firestore with the JSON account key.
@@ -54,9 +54,9 @@ def unpack_drawings(filename):
 
 key_dict = json.loads(st.secrets["textkey"])
 creds = service_account.Credentials.from_service_account_info(key_dict)
-db = firestore.Client(credentials=creds, project="MindReader")
+db = firestore.Client(credentials=creds, project="project")
 # Create a reference to the image data.
-doc_ref = db.collection("MITR").document("mitr-happy-without-umbrella")
+doc_ref = db.collection("MitrDataset").document("test1")
 
 
 
@@ -84,11 +84,11 @@ canvas_result = st_canvas(
     key="canvas",
 )
 
-#st.button("save drawing")
+st.button("save drawing")
 image_data = canvas_result.image_data
 #ndarray to array conversion
 #json to ndjson
-json_data = canvas_result.json_data
+#json_data = canvas_result.json_data
 
 #firestore_imagedata = image_data.flatten()
 
@@ -96,7 +96,8 @@ if canvas_result.json_data is not None:
     st.dataframe(pd.json_normalize(canvas_result.json_data["objects"]))
 st.write(image_data)
 # Then get the data at that reference.
-firestore_data = image_data.dumps()
+arraydata = np.array(image_data)
+firestore_data = arraydata.tobytes()
 doc = doc_ref.set( 
     { 
     "drawing":firestore_data
@@ -104,5 +105,5 @@ doc = doc_ref.set(
 )    
 
 # Let's see what we got!
-#st.write("The id is: ", doc.id)
-st.write("The Drawing data are: ", firestore_data )  
+st.write("The id is: ", doc.id)
+st.write("The Drawing data are: ", doc.to_dict() )  
