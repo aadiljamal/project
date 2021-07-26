@@ -64,7 +64,7 @@ arraydata = np.array(image_data)
 firestore_data = arraydata.tobytes()
 doc = doc_ref.set( 
     { 
-    "drawing":firestore_data
+    "drawing":"testdataa"
     }
 )    
 
