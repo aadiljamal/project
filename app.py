@@ -20,7 +20,7 @@ key_dict = json.loads(st.secrets["textkey"])
 creds = service_account.Credentials.from_service_account_info(key_dict)
 db = firestore.Client(credentials=creds, project="project")
 # Create a reference to the image data.
-doc_ref = db.collection("MitrDataset").document("test1")
+doc_ref = db.collection("MitrDataset").document("test5")
 
 
 
