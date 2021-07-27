@@ -1,6 +1,6 @@
 import toml
 output_file = '.streamlit/secrets.toml'
-with open("mindreader-firestore-key.json") as json_file:
+with open("project-321005-firebase-adminsdk-f06al-fe87e34d6f.json") as json_file:
     json_text = json_file.read()
 config = {"textkey": json_text}
 toml_config = toml.dumps(config)

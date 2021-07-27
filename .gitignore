@@ -1,3 +1,4 @@
 mindreader-firestore-key.json
 secrets.toml
 databasekey.*
+*.json
