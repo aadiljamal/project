@@ -17,7 +17,8 @@ drawing_mode = st.sidebar.selectbox(
     "Drawing tool:", ("freedraw", "line", "rect", "circle", "transform")
 )
 st.balloons()
-filename = st.text_input("Enter Drawing Name and start drawing Man in the ran if you want to know more about this test check belwo image")
+filename = st.text_input("Enter Drawing Name in the textfield below, start drawing Man in the ran if you want to know more about this test check belwo image")
+st.write("I am requesting you to be a part of my project by drawing doodle in the canvas ")
 st.image('example.jpg')
 
 realtime_update = st.checkbox("CHECK_ME AFTER DRAWING IS DONE", False)
@@ -35,13 +36,6 @@ canvas_result = st_canvas(
     key="canvas",
 )
 
-#contributer instructions
-
-
-
-#st.write(type(test1.png))
-
-
 st.write("Please share the saved image with me on my mail id mraadil.jamal@outlook.com Else share with my collaques Aatif and Zainab on their whatsapp")
 #Download image function
 # 
@@ -57,3 +51,4 @@ if canvas_result.image_data is not None:
     if realtime_update == True:
         result = Image.fromarray((canvas_result.image_data).astype(np.uint8))
         st.markdown(get_image_download_link(result), unsafe_allow_html=True)      
+        st.image(result)        
