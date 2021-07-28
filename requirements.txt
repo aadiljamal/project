@@ -6,3 +6,5 @@ pillow==8.2.0
 google-cloud-firestore==2.2.0
 firebase_admin==5.0.1
 matplotlib
+import base64
+from io import BytesIO

@@ -4,6 +4,8 @@ import streamlit as st
 import numpy as np
 from streamlit_drawable_canvas import st_canvas
 import matplotlib.pyplot as plt
+import base64
+from io import BytesIO
 
 
 # Specify canvas parameters in application
@@ -42,8 +44,22 @@ if canvas_result.image_data is not None:
     #st.write(type(npdata))
     #st.write(canvas_result) 
     if realtime_update == True:
-        plt.imsave(filename+".png", (canvas_result.image_data).astype(np.uint8), cmap='Greys')
+        result = Image.fromarray(canvas_result.image_data)
+
 #st.write(type(test1.png))
 
 
 st.write("Please share the saved image with me on my mail id mraadil.jamal@outlook.com Else share with my collaques Aatif and Zainab on their whatsapp")
+#Download image function
+def get_image_download_link(img):
+	"""Generates a link allowing the PIL image to be downloaded
+	in:  PIL image
+	out: href string
+	"""
+	buffered = BytesIO()
+	img.save(buffered, format="JPEG")
+	img_str = base64.b64encode(buffered.getvalue()).decode()
+	href = f'<a href="data:file/jpg;base64,{img_str}">Download result</a>'
+	return href
+
+st.markdown(get_image_download_link(result), unsafe_allow_html=True)  
