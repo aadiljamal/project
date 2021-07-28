@@ -39,11 +39,10 @@ canvas_result = st_canvas(
 # Do something interesting with the image data and paths
 if canvas_result.image_data is not None:
     #image_data_result = st.image(canvas_result.image_data)
-    npdata = canvas_result.image_data
     #st.write(type(npdata))
     #st.write(canvas_result) 
     if realtime_update == True:
-        plt.imsave(filename+".png", npdata.astype(np.uint8), cmap='Greys')
+        plt.imsave(filename+".png", (canvas_result.image_data).astype(np.uint8), cmap='Greys')
 #st.write(type(test1.png))
 
 
