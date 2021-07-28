@@ -16,7 +16,7 @@ drawing_mode = st.sidebar.selectbox(
 )
 st.balloons()
 filename = st.text_input("Enter Drawing Name and start drawing Man in the ran if you want to know more about this test check belwo image")
-st.image('./example.jpg')
+st.image('example.jpg')
 
 realtime_update = st.checkbox("CHECK_ME AFTER DRAWING IS DONE", False)
 
