@@ -39,6 +39,7 @@ canvas_result = st_canvas(
 
 
 # Do something interesting with the image data and paths
+result=[]
 if canvas_result.image_data is not None:
     #image_data_result = st.image(canvas_result.image_data)
     #st.write(type(npdata))
