@@ -4,7 +4,7 @@ import streamlit as st
 import numpy as np
 from streamlit_drawable_canvas import st_canvas
 import matplotlib.pyplot as plt
-import pybase64
+import base64
 from io import BytesIO
 
 
@@ -38,29 +38,22 @@ canvas_result = st_canvas(
 #contributer instructions
 
 
-# Do something interesting with the image data and paths
-result=[]
-if canvas_result.image_data is not None:
-    #image_data_result = st.image(canvas_result.image_data)
-    #st.write(type(npdata))
-    #st.write(canvas_result) 
-    if realtime_update == True:
-        result = Image.fromarray(canvas_result.image_data)
 
 #st.write(type(test1.png))
 
 
 st.write("Please share the saved image with me on my mail id mraadil.jamal@outlook.com Else share with my collaques Aatif and Zainab on their whatsapp")
 #Download image function
+# 
 def get_image_download_link(img):
-	"""Generates a link allowing the PIL image to be downloaded
-	in:  PIL image
-	out: href string
-	"""
-	buffered = BytesIO()
-	img.save(buffered, format="PNG")
-	img_str = pybase64.b64encode(buffered.getvalue()).decode()
-	href = f'<a href="data:file/jpg;base64,{img_str}">Download result</a>'
-	return href
-
-st.markdown(get_image_download_link(result), unsafe_allow_html=True)  
+                buffered=BytesIO()
+                img.save(buffered, format='PNG')
+                img_str = base64.b64encode(buffered.getvalue()).decode()
+                href = f'<a href="data:file/png;base64,{img_str}">Download result</a>';
+                return href
+        
+#Do something interesting with the image data and paths
+if canvas_result.image_data is not None:
+    if realtime_update == True:
+        result = Image.fromarray((canvas_result.image_data).astype(np.uint8))
+        st.markdown(get_image_download_link(result), unsafe_allow_html=True)      
