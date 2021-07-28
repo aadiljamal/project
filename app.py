@@ -58,7 +58,7 @@ def get_image_download_link(img):
 	out: href string
 	"""
 	buffered = BytesIO()
-	img.save(buffered, format="JPEG")
+	img.save(buffered, format="PNG")
 	img_str = pybase64.b64encode(buffered.getvalue()).decode()
 	href = f'<a href="data:file/jpg;base64,{img_str}">Download result</a>'
 	return href
