@@ -4,7 +4,7 @@ import streamlit as st
 import numpy as np
 from streamlit_drawable_canvas import st_canvas
 import matplotlib.pyplot as plt
-import base64
+import pybase64
 from io import BytesIO
 
 
@@ -58,7 +58,7 @@ def get_image_download_link(img):
 	"""
 	buffered = BytesIO()
 	img.save(buffered, format="JPEG")
-	img_str = base64.b64encode(buffered.getvalue()).decode()
+	img_str = pybase64.b64encode(buffered.getvalue()).decode()
 	href = f'<a href="data:file/jpg;base64,{img_str}">Download result</a>'
 	return href
 
