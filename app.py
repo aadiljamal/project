@@ -5,13 +5,6 @@ import numpy as np
 from streamlit_drawable_canvas import st_canvas
 import matplotlib.pyplot as plt
 
-#css defnition
-def local_css(file_name):
-    with open(file_name) as f:
-        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
-local_css("style.css")
-
-
 
 # Specify canvas parameters in application
 stroke_width = st.sidebar.slider("Stroke width: ", 1, 25, 3)
