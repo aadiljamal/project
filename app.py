@@ -18,7 +18,7 @@ drawing_mode = st.sidebar.selectbox(
 )
 st.balloons()
 filename = st.text_input("Enter Drawing Name in the textfield below, start drawing Man in the ran if you want to know more about this test check belwo image")
-st.write("I am requesting you to be a part of my project by drawing doodle in the canvas ")
+st.write("I am requesting you to be a part of our project by drawing doodle in the canvas ")
 st.image('example.jpg')
 
 realtime_update = st.checkbox("CHECK_ME AFTER DRAWING IS DONE", False)
@@ -36,7 +36,7 @@ canvas_result = st_canvas(
     key="canvas",
 )
 
-st.write("Please share the saved image with me on my mail id mraadil.jamal@outlook.com Else share with my collaques Aatif and Zainab on their whatsapp")
+st.write("Please share the saved image with us on my mail id mraadil.jamal@outlook.com or share with my team mate Aatif and Zainab on their whatsapp")
 #Download image function
 # 
 def get_image_download_link(img):
