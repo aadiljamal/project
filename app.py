@@ -41,31 +41,19 @@ canvas_result = st_canvas(
 st.write("Please share the saved image with us on my mail id mraadil.jamal@outlook.com or share with my team mate Aatif and Zainab on their whatsapp")
 #Download image function
 # 
-def get_image_download_link(img):
-                buffered=BytesIO()
-                img.save(buffered, format='PNG')
-                img_str = base64.b64encode(buffered.getvalue()).decode()
-                href = f'<a href="data:file/png;base64,{img_str}">Download result</a>';
-                return href
+#def get_image_download_link(img):
+  #              buffered=BytesIO()
+   #             img.save(buffered, format='JPG')
+    #            img_str = base64.b64encode(buffered.getvalue()).decode()
+     #           href = f'<a href="data:file/jpg;base64,{img_str}">Download result</a>';
+      #          return href
         
 #Do something interesting with the image data and paths
 if canvas_result.image_data is not None:
     if realtime_update == True:
-        result = Image.fromarray((canvas_result.image_data).astype(np.uint8))
-        st.markdown(get_image_download_link(result), unsafe_allow_html=True)      
+        result = Image.fromarray((canvas_result.image_data).astype(np.uint8))    
         st.image(result)
-        #gauth = GoogleAuth()   
-        #drive = GoogleDrive(gauth)        
-        #gfile = drive.CreateFile({'parents': [{'id': '1pg7YAIHiPZQDURJBivEnO3vJZj4e_SHs'}]})
-        # Read file and set it as the content of this instance.
-        #upload_file = "/home/aadil/Desktop/project/6241.png"
-        #gfile.SetContentFile(upload_file)
-        #try:
-         #   gfile.Upload() # Upload the file.drive = GoogleDrive(gauth) 
-        #except OSError as exc:
-         #   if exc.errno == 36:
-          #      handle_filename_too_long()
-           # else:
-           #     raise  
+        result.save(f'./data/{filename}.png')
+        
                  
 
