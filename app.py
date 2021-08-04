@@ -3,9 +3,11 @@ from PIL import Image
 import streamlit as st
 import numpy as np
 from streamlit_drawable_canvas import st_canvas
-import matplotlib.pyplot as plt
 import base64
 from io import BytesIO
+#from pydrive.auth import GoogleAuth
+#from pydrive.drive import GoogleDrive
+
 
 
 # Specify canvas parameters in application
@@ -51,4 +53,19 @@ if canvas_result.image_data is not None:
     if realtime_update == True:
         result = Image.fromarray((canvas_result.image_data).astype(np.uint8))
         st.markdown(get_image_download_link(result), unsafe_allow_html=True)      
-        st.image(result)        
+        st.image(result)
+        #gauth = GoogleAuth()   
+        #drive = GoogleDrive(gauth)        
+        #gfile = drive.CreateFile({'parents': [{'id': '1pg7YAIHiPZQDURJBivEnO3vJZj4e_SHs'}]})
+        # Read file and set it as the content of this instance.
+        #upload_file = "/home/aadil/Desktop/project/6241.png"
+        #gfile.SetContentFile(upload_file)
+        #try:
+         #   gfile.Upload() # Upload the file.drive = GoogleDrive(gauth) 
+        #except OSError as exc:
+         #   if exc.errno == 36:
+          #      handle_filename_too_long()
+           # else:
+           #     raise  
+                 
+
