@@ -12,8 +12,8 @@ import time
 #Pandas and numpy will be used to fetch dataframes and to process numpy/array data
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plot
-import seaborn as sns
+#import matplotlib.pyplot as plot
+#import seaborn as sns
 
 
 #PIL or pillow will be used to perform different image transformation operations
