@@ -2,3 +2,5 @@ streamlit==0.85.0
 streamlit_drawable_canvas==0.7.0
 pillow==8.2.0
 pybase64==1.1.4
+tensorflow==2.6
+
