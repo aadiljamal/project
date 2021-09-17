@@ -112,7 +112,7 @@ st.write("Thank you to be a part of our testing and  datacollection process")
 analysis = pd.read_csv("./research_result_lite.csv")
 
 
-dirpath = "/testfiles"  
+dirpath = "./testfiles"  
 if canvas_result.image_data is not None:
     if realtime_update == True:
         global test_image
