@@ -30,7 +30,6 @@ tensorboard-plugin-wit==1.8.0
 tensorflow==2.6.0
 tensorflow-addons==0.14.0
 tensorflow-datasets==4.4.0
-tensorflow-gpu==2.4.1
 tensorflow-hub==0.9.0
 tensorflow-metadata==1.2.0
 tflite-model-maker==0.3.2
