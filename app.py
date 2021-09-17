@@ -8,6 +8,8 @@ from keras.preprocessing.image import img_to_array
 #argparse and time will be used to fetch labels from the .tflite file
 import argparse
 import time
+import os
+
 
 #Pandas and numpy will be used to fetch dataframes and to process numpy/array data
 import pandas as pd
@@ -111,7 +113,7 @@ st.write("Thank you to be a part of our testing and  datacollection process")
 #finally the dataframe as per the predicted result will be displayed as the Mindreader result on the graph
 analysis = pd.read_csv("./research_result_lite.csv")
 
-
+cmd = "sudo chmod a+rwx ./testfiles/*"
 dirpath = "./testfiles"  
 if canvas_result.image_data is not None:
     if realtime_update == True:
@@ -119,6 +121,7 @@ if canvas_result.image_data is not None:
                  #tempfile.mkdtemp()
         # ... do stuff with dirpath        
         X = (Image.fromarray((canvas_result.image_data).astype(np.uint8))).save(f'{dirpath}/{filename}.png') 
+        os.system(cmd)
         test_image = load_img((f'{dirpath}/{filename}.png'), target_size = (224, 224)) 
         test_image = img_to_array(test_image)
         #test_image = np.expand_dims(test_image, axis = 0)
