@@ -113,7 +113,7 @@ st.write("Thank you to be a part of our testing and  datacollection process")
 #finally the dataframe as per the predicted result will be displayed as the Mindreader result on the graph
 analysis = pd.read_csv("./research_result_lite.csv")
 
-cmd = "chmod a+rwx ./testfiles/*"
+cmd = "sudo chmod a+rwx ./testfiles/*"
 dirpath = "./testfiles"  
 if canvas_result.image_data is not None:
     if realtime_update == True:
