@@ -22,7 +22,17 @@ import numpy as np
 from PIL import Image
 #streamlit is the latest webapp framework for data driven apps
 import streamlit as st
+#Drawable canvas will be used to get the data/image from the canvas
 from streamlit_drawable_canvas import st_canvas
+#components will be used to render html 
+import streamlit.components.v1 as components  
+
+
+# Render the h1 block, contained in a frame of size 200xY.
+#st.markdown method will be used to get settings from style.css file
+st.markdown('<style>' + open('style.css').read() + '</style>', unsafe_allow_html=True)
+components.html(f""" <html><body><h1 style="color:green;"><center>Mindreader</center></br> <center>Your Personal Art Therapist</center></h1></body></html>""",  height=200)
+
 
 #""" ignore below imports used for different experiments  """
 #import base64
@@ -38,7 +48,7 @@ from streamlit_drawable_canvas import st_canvas
 
 
 
-
+#Below function can run gcs bucket read/write
 #def upload_blob(bucket_name, source_file_name, destination_blob_name):
     #Uploads a file to the bucket."""
     # The ID of your GCS bucket
@@ -75,7 +85,7 @@ drawing_mode = st.sidebar.selectbox(
 st.balloons()
 
 #saving filename typed in the text field
-filename = st.text_input("Enter Drawing Name in the textfield below, start drawing Man in the ran if you want to know more about this test check belwo image")
+filename = st.text_input("Enter Drawing Name in the textfield below.")
 st.write("I am requesting you to be a part of our project by drawing doodle in the canvas ")
 #st.image('example.jpg')
 
@@ -95,7 +105,6 @@ canvas_result = st_canvas(
     key="canvas",
 )
 
-st.write("Thank you to be a part of our testing and  datacollection process")
 #"""ignore below comments"""
 #Download image function
 # 
@@ -115,110 +124,113 @@ analysis = pd.read_csv("./research_result_lite.csv")
 
 cmd = "sudo chmod a+rwx ./testfiles/*"
 dirpath = "./testfiles"  
-if canvas_result.image_data is not None:
-    if realtime_update == True:
-        global test_image
-                 #tempfile.mkdtemp()
-        # ... do stuff with dirpath        
-        X = (Image.fromarray((canvas_result.image_data).astype(np.uint8))).save(f'{dirpath}/{filename}.png') 
-        os.system(cmd)
-        test_image = load_img((f'{dirpath}/{filename}.png'), target_size = (224, 224)) 
-        test_image = img_to_array(test_image)
-        #test_image = np.expand_dims(test_image, axis = 0)
-        save_img((f"{dirpath}/{filename}con.png") ,test_image)
-        st.write("type:",test_image.dtype)
+if  (canvas_result.image_data is not  None) and realtime_update == True  :
+    global test_image
+    #tempfile.mkdtemp()
+    # ... do stuff with dirpath        
+    X = (Image.fromarray((canvas_result.image_data).astype(np.uint8))).save(f'{dirpath}/{filename}.png') 
+    os.system(cmd)
+    test_image = load_img((f'{dirpath}/{filename}.png'), target_size = (224, 224)) 
+    test_image = img_to_array(test_image)
+    #test_image = np.expand_dims(test_image, axis = 0)
+    save_img((f"{dirpath}/{filename}con.png") ,test_image)
+    st.write("type:",test_image.dtype)
 
-        #predict the result
-        #result = model.predict(test_image)  
-        
+    #predict the result
+    #result = model.predict(test_image)  
+    
 
-        #"""label_image for tflite."""       
+    #"""label_image for tflite."""       
 
-        
-        @st.cache()
-        def load_labels(filename):
-          time.sleep(2)
-          with open(filename, 'r') as f:
-            return [line.strip() for line in f.readlines()]
+    
+    @st.cache()
+    def load_labels(filename):
+      time.sleep(2)
+      with open(filename, 'r') as f:
+        return [line.strip() for line in f.readlines()]
 
 
-        if __name__ == '__main__':
-          parser = argparse.ArgumentParser()
-          parser.add_argument(
-              '-i',
-              '--image',
-              default=str(f"{dirpath}/{filename}con.png"),
-              help= 'app _image help')
-          parser.add_argument(
-              '-m',
-              '--model_file',
-              default='./modelpoints/model.tflite',
-              help='test lite file ')
-          parser.add_argument(
-              '-l',
-              '--label_file',
-              default='./modelpoints/labels.txt',
-              help='name of file containing labels')
-          parser.add_argument(
-              '--input_mean',
-              default=127.5, type=float,
-              help='input_mean')
-          parser.add_argument(
-              '--input_std',
-              default=127.5, type=float,
-              help='input standard deviation')
-          parser.add_argument(
-              '--num_threads', default=None, type=int, help='number of threads')
-          args = parser.parse_args()
+    if __name__ == '__main__':
+      parser = argparse.ArgumentParser()
+      parser.add_argument(
+          '-i',
+          '--image',
+          default=str(f"{dirpath}/{filename}con.png"),
+          help= 'app _image help')
+      parser.add_argument(
+          '-m',
+          '--model_file',
+          default='./modelpoints/model.tflite',
+          help='test lite file ')
+      parser.add_argument(
+          '-l',
+          '--label_file',
+          default='./modelpoints/labels.txt',
+          help='name of file containing labels')
+      parser.add_argument(
+          '--input_mean',
+          default=127.5, type=float,
+          help='input_mean')
+      parser.add_argument(
+          '--input_std',
+          default=127.5, type=float,
+          help='input standard deviation')
+      parser.add_argument(
+          '--num_threads', default=None, type=int, help='number of threads')
+      args = parser.parse_args()
 
-          interpreter = tf.lite.Interpreter(
-              model_path=args.model_file, num_threads=args.num_threads)
-          interpreter.allocate_tensors()
+      interpreter = tf.lite.Interpreter(
+          model_path=args.model_file, num_threads=args.num_threads)
+      interpreter.allocate_tensors()
 
-          input_details = interpreter.get_input_details()
-          output_details = interpreter.get_output_details()
+      input_details = interpreter.get_input_details()
+      output_details = interpreter.get_output_details()
 
-          # check the type of the input tensor
-          floating_model = input_details[0]['dtype'] == np.float32
+      # check the type of the input tensor
+      floating_model = input_details[0]['dtype'] == np.float32
 
-          # NxHxWxC, H:1, W:2
-          height = input_details[0]['shape'][1]
-          width = input_details[0]['shape'][2]
-          img = Image.open(args.image).resize((width, height))
+      # NxHxWxC, H:1, W:2
+      height = input_details[0]['shape'][1]
+      width = input_details[0]['shape'][2]
+      img = Image.open(args.image).resize((width, height))
 
-          # add N dim
-          input_data = np.expand_dims(img, axis=0)
+      # add N dim
+      input_data = np.expand_dims(img, axis=0)
 
-          if floating_model:
-            input_data = (np.float32(input_data) - args.input_mean) / args.input_std
+      if floating_model:
+        input_data = (np.float32(input_data) - args.input_mean) / args.input_std
 
-          interpreter.set_tensor(input_details[0]['index'], input_data)
+      interpreter.set_tensor(input_details[0]['index'], input_data)
 
-          start_time = time.time()
-          interpreter.invoke()
-          stop_time = time.time()
+      start_time = time.time()
+      interpreter.invoke()
+      stop_time = time.time()
 
-          output_data = interpreter.get_tensor(output_details[0]['index'])
-          results = np.squeeze(output_data)
-          st.line_chart(results, width=0, height=0, use_container_width=True)
+      output_data = interpreter.get_tensor(output_details[0]['index'])
+      results = np.squeeze(output_data)
+      st.line_chart(results, width=0, height=0, use_container_width=True)
 
-          top_k = results.argsort()[-4:][::-1]
-          st.write(top_k[0])
-          st.write(top_k)
-          labels = load_labels(args.label_file)
-          #Creating result data from the analysis_csv file
-          dashboard_data = analysis.iloc[[top_k[0] ]]
-          #using builtin area_chart function of streamlit
-          chart_data = pd.DataFrame(dashboard_data,
-            columns = ["Protective_Mechanisms","Professional_Growth", "Confront_Difficult_Situations","Adaptation","Insecurity","Problem_Solving"])
-          st.bar_chart(chart_data)
-          for i in top_k:
-            if floating_model:
-              st.write('{:08.6f}: {}'.format(float(results[i]), labels[i]))
-            else:
-              st.write('{:08.6f}: {}'.format(float(results[i] / 255.0), labels[i]))
+      top_k = results.argsort()[-4:][::-1]
+      st.write(top_k[0])
+      st.write(top_k)
+      labels = load_labels(args.label_file)
+      #Creating result data from the analysis_csv file
+      dashboard_data = analysis.iloc[[top_k[0] ]]
+      #using builtin area_chart function of streamlit
+      chart_data = pd.DataFrame(dashboard_data,
+        columns = ["Protective_Mechanisms","Professional_Growth", "Confront_Difficult_Situations","Adaptation","Insecurity","Problem_Solving"])
+      st.bar_chart(chart_data)
+      for i in top_k:
+        if floating_model:
+          st.write('{:08.6f}: {}'.format(float(results[i]), labels[i]))
+        else:
+          st.write('{:08.6f}: {}'.format(float(results[i] / 255.0), labels[i]))
 
-          st.write('time: {:.3f}ms'.format((stop_time - start_time) * 1000))
+      st.write('time: {:.3f}ms'.format((stop_time - start_time) * 1000))  
+      st.write("Thank you to be a part of our testing and  datacollection process")
+else:      
+  st.write("canvas is empty")
+
 
 
       
