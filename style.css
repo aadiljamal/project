@@ -1,22 +1,22 @@
-body {
-    color: black;
-    background-color: #4F8BF9;
-}
+
 #root > div:nth-child(1) > div > div > div > div > section.main.css-1v3fvcr.eknhn3m1 > div > div:nth-child(1) > div:nth-child(4) > div > label{
-color:red;
-font-size: large;
+    color:mediumslateblue;
+    font-size: large;
+    }
+
+
+
+#root > div:nth-child(1) > div > div > div > div > section.main.css-1v3fvcr.eknhn3m1 > div > div:nth-child(1) > div:nth-child(7) > div > label > div
+{
+    color:mediumslateblue;
 }
-color:green;
-}
-.stButton>button {
-    color: #4F8BF9;
-    border-radius: 50%;
-    height: 3em;
-    width: 3em;
-}
+
+
+
+
 
 .stTextInput>div>div>input {
     color: green;
-    text
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
