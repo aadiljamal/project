@@ -1,4 +1,5 @@
 #TF is the main ML/AI library and keras is its high level api
+from numpy.core.fromnumeric import size
 import tensorflow as tf
 from keras.preprocessing.image import load_img
 from keras.preprocessing.image import save_img
@@ -14,6 +15,10 @@ import os
 #Pandas and numpy will be used to fetch dataframes and to process numpy/array data
 import pandas as pd
 import numpy as np
+
+#Plot library
+import plotly.express as px
+
 #import matplotlib.pyplot as plot
 #import seaborn as sns
 
@@ -31,7 +36,7 @@ import streamlit.components.v1 as components
 # Render the h1 block, contained in a frame of size 200xY.
 #st.markdown method will be used to get settings from style.css file
 st.markdown('<style>' + open('style.css').read() + '</style>', unsafe_allow_html=True)
-components.html(f""" <html><body><h1 style="color:green;"><center>Mindreader</center></br> <center>Your Personal Art Therapist</center></h1></body></html>""",  height=200)
+components.html(f""" <html><body><h1 style="color:green;"><center>Mindreader</center><center>Personal Art Therapist</center></h1></body></html>""",  height=111)
 
 
 #""" ignore below imports used for different experiments  """
@@ -85,7 +90,7 @@ drawing_mode = st.sidebar.selectbox(
 st.balloons()
 
 #saving filename typed in the text field
-filename = st.text_input("Enter Drawing Name in the textfield below.")
+filename = st.text_input("Drawing_name",help="Enter Drawing Name in the textfield below.")
 st.write("I am requesting you to be a part of our project by drawing doodle in the canvas ")
 #st.image('example.jpg')
 
@@ -220,6 +225,10 @@ if  (canvas_result.image_data is not  None) and realtime_update == True  :
       chart_data = pd.DataFrame(dashboard_data,
         columns = ["Protective_Mechanisms","Professional_Growth", "Confront_Difficult_Situations","Adaptation","Insecurity","Problem_Solving"])
       st.bar_chart(chart_data)
+      df = chart_data
+      # Here we use a column with categorical data
+      fig = px.histogram(df)
+      st.plotly_chart(fig)
       for i in top_k:
         if floating_model:
           st.write('{:08.6f}: {}'.format(float(results[i]), labels[i]))
@@ -229,7 +238,7 @@ if  (canvas_result.image_data is not  None) and realtime_update == True  :
       st.write('time: {:.3f}ms'.format((stop_time - start_time) * 1000))  
       st.write("Thank you to be a part of our testing and  datacollection process")
 else:      
-  st.write("canvas is empty")
+  st.write("canvas is empty",size=20)
 
 
 
