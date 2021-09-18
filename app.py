@@ -91,7 +91,9 @@ st.balloons()
 
 #saving filename typed in the text field
 filename = st.text_input("Drawing_name",help="Enter Drawing Name in the textfield below.")
-st.write("I am requesting you to be a part of our project by drawing doodle in the canvas ")
+components.html(f""" <html><body><h5> I am requesting you to be a part of my project by drawing doodle Man_in_the_Rain</h5></body></html>""",  height=40)
+link = '[Man_in_the_Rain](https://brightside.me/wonder-quizzes/this-draw-a-person-in-the-rain-test-will-reveal-your-true-self-271710/)'
+redirect = st.markdown(link, unsafe_allow_html=True)
 #st.image('example.jpg')
 
 #Making radio button realtime update by default false it will act as save or submit button in AI portion of the program

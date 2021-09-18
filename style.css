@@ -3,7 +3,8 @@ body {
     background-color: #4F8BF9;
 }
 #root > div:nth-child(1) > div > div > div > div > section.main.css-1v3fvcr.eknhn3m1 > div > div:nth-child(1) > div:nth-child(4) > div > label{
-color:black;
+color:red;
+font-size: large;
 }
 color:green;
 }
