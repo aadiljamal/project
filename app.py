@@ -10,7 +10,7 @@ from keras.preprocessing.image import img_to_array
 import argparse
 import time
 import os
-
+import json
 
 #Pandas and numpy will be used to fetch dataframes and to process numpy/array data
 import pandas as pd
@@ -45,6 +45,7 @@ components.html(f""" <html><body><h1 style="color:green;"><center>Mindreader</ce
 #from pydrive.auth import GoogleAuth
 #from pydrive.drive import GoogleDrive
 from google.cloud import storage
+from google.oauth2 import service_account
 import tempfile
 #import os
 #import shutil
@@ -107,8 +108,9 @@ def upload_blob(bucket_name, source_file_name, destination_blob_name):
     source_file_name = f"{dirpath}/{filename}.png"
     #The ID of your GCS object
     destination_blob_name = f"mitr-data-bucket/testfiles/{filename}.png"
-
-    storage_client = storage.Client.from_service_account_json("project-327006-f05c8d96b3c3.json", project="project")
+    key_dict = json.loads(st.secrets["textkey"] )
+    creds = service_account.Credentials.from_service_account_info(key_dict)
+    storage_client = storage.Client(credentials=creds, project="project")
     bucket = storage_client.bucket(bucket_name)
     blob = bucket.blob(destination_blob_name)
     blob.content_type = 'image/png'
