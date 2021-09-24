@@ -44,38 +44,13 @@ components.html(f""" <html><body><h1 style="color:green;"><center>Mindreader</ce
 #from io import BytesIO
 #from pydrive.auth import GoogleAuth
 #from pydrive.drive import GoogleDrive
-#from google.cloud import storage
+from google.cloud import storage
+import tempfile
 #import os
 #import shutil
 
-#dirpath = tempfile.mkdtemp()
+dirpath = tempfile.mkdtemp()
 # ... do stuff with dirpath
-
-
-
-#Below function can run gcs bucket read/write
-#def upload_blob(bucket_name, source_file_name, destination_blob_name):
-    #Uploads a file to the bucket."""
-    # The ID of your GCS bucket
-    # bucket_name = "your-bucket-name"
-    # The path to your file to upload
-    # source_file_name = "local/path/to/file"
-    # The ID of your GCS object
-    # destination_blob_name = "storage-object-name"
-
-   # storage_client = storage.Client.from_service_account_json("arttherapist_key.json", project="arttherapist")
-    #bucket = storage_client.bucket(bucket_name)
-    #blob = bucket.blob(destination_blob_name)
-    #blob.content_type = 'image/png'
-
-    #blob.upload_from_filename(source_file_name)
-
-    #print(
-      #  "File {} uploaded to {}.".format(
-       #     source_file_name, destination_blob_name
-        #)
-    #)
-
 
 
 # Specifying canvas parameters in application
@@ -123,24 +98,48 @@ canvas_result = st_canvas(
       #          return href
         
 
+#Below function can run gcs bucket read/write
+def upload_blob(bucket_name, source_file_name, destination_blob_name):
+    # Uploads a file to the bucket.
+    # The ID of your GCS bucket
+    bucket_name = "mitr-data-bucket"
+    # The path to your file to upload
+    source_file_name = f"{dirpath}/{filename}.png"
+    #The ID of your GCS object
+    destination_blob_name = f"mitr-data-bucket/testfiles/{filename}.png"
+
+    storage_client = storage.Client.from_service_account_json("project-327006-f05c8d96b3c3.json", project="project")
+    bucket = storage_client.bucket(bucket_name)
+    blob = bucket.blob(destination_blob_name)
+    blob.content_type = 'image/png'
+
+    blob.upload_from_filename(source_file_name)
+
+    # print(
+    #    "File {} uploaded to {}.".format(
+    #        source_file_name, destination_blob_name
+    #     )
+    # )
+
+
 #Do something interesting with the image data and paths
 #this portion will collect canvas data and convert it to required format of the Image classification model and predict the output 
 #model labeller will display the percentage of the classification result
 #finally the dataframe as per the predicted result will be displayed as the Mindreader result on the graph
 analysis = pd.read_csv("./research_result_lite.csv")
 
-cmd = "sudo chmod a+rwx ./testfiles/*"
-dirpath = "./testfiles"  
+#cmd = "sudo chmod a+rwx ./testfiles/*" 
 if  (canvas_result.image_data is not  None) and realtime_update == True  :
     global test_image
     #tempfile.mkdtemp()
     # ... do stuff with dirpath        
     X = (Image.fromarray((canvas_result.image_data).astype(np.uint8))).save(f'{dirpath}/{filename}.png') 
-    os.system(cmd)
+    #os.system(cmd)
     test_image = load_img((f'{dirpath}/{filename}.png'), target_size = (224, 224)) 
     test_image = img_to_array(test_image)
     #test_image = np.expand_dims(test_image, axis = 0)
-    save_img((f"{dirpath}/{filename}con.png") ,test_image)
+    save_img(f'{dirpath}/{filename}con.png',test_image)
+    upload_blob('mitr-data-bucket',(f'{dirpath}/{filename}.png') ,'test')
     st.write("type:",test_image.dtype)
 
     #predict the result
