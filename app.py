@@ -67,7 +67,7 @@ st.balloons()
 
 #saving filename typed in the text field
 filename = st.text_input("Drawing_name",help="Enter Drawing Name in the textfield below.")
-components.html(f""" <html><meta name="viewport" content="width=device-width, initial-scale=1"><body> I am requesting you to be a part of my project by drawing doodle Man_in_the_Rain</body></html>""",  height=40)
+components.html(f""" <html><meta name="viewport" content="width=device-width, initial-scale=1"><body style="color:red; text-align:center"> I am requesting you to be a part of my project by drawing doodle Man_in_the_Rain</body></html>""",  height=50)
 link = '[Man_in_the_Rain](https://brightside.me/wonder-quizzes/this-draw-a-person-in-the-rain-test-will-reveal-your-true-self-271710/)'
 redirect = st.markdown(link, unsafe_allow_html=True)
 #st.image('example.jpg')

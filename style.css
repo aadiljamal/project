@@ -25,6 +25,7 @@
 .stTextInput>div>div>input {
     width: 100%;
     padding: 10px;
+    text-align: center;
     color: green;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
