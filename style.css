@@ -1,7 +1,11 @@
-
+* {
+    background: #fff !important;
+    color: #0f0 !important;
+    outline: solid #f00 1px !important;
+  }
 #root > div:nth-child(1) > div > div > div > div > section.main.css-1v3fvcr.eknhn3m1 > div > div:nth-child(1) > div:nth-child(4) > div > label{
-    color:mediumslateblue;
-    font-size: large;
+    color:rgba(201, 17, 155, 0.5);
+    font-size: medium;
     }
 
 
@@ -16,6 +20,8 @@
 
 
 .stTextInput>div>div>input {
+    width: 100%;
+    padding: 10px;
     color: green;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

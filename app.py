@@ -36,7 +36,7 @@ import streamlit.components.v1 as components
 # Render the h1 block, contained in a frame of size 200xY.
 #st.markdown method will be used to get settings from style.css file
 st.markdown('<style>' + open('style.css').read() + '</style>', unsafe_allow_html=True)
-components.html(f""" <html><body><h1 style="color:green;"><center>Mindreader</center><center>Personal Art Therapist</center></h1></body></html>""",  height=111)
+components.html(f""" <html><meta name="viewport" content="width=device-width, initial-scale=1"><body style ="font-size:30px;color:green;" ><center>Mindreader</center><center>Personal Art Therapist</center></body></html>""",  height=111)
 
 
 #""" ignore below imports used for different experiments  """
@@ -67,7 +67,7 @@ st.balloons()
 
 #saving filename typed in the text field
 filename = st.text_input("Drawing_name",help="Enter Drawing Name in the textfield below.")
-components.html(f""" <html><body><h5> I am requesting you to be a part of my project by drawing doodle Man_in_the_Rain</h5></body></html>""",  height=40)
+components.html(f""" <html><meta name="viewport" content="width=device-width, initial-scale=1"><body> I am requesting you to be a part of my project by drawing doodle Man_in_the_Rain</body></html>""",  height=40)
 link = '[Man_in_the_Rain](https://brightside.me/wonder-quizzes/this-draw-a-person-in-the-rain-test-will-reveal-your-true-self-271710/)'
 redirect = st.markdown(link, unsafe_allow_html=True)
 #st.image('example.jpg')
@@ -83,7 +83,7 @@ canvas_result = st_canvas(
     background_color=bg_color,
     background_image=Image.open(bg_image) if bg_image else None,
     update_streamlit=realtime_update,
-    height=450,
+    height=400,
     drawing_mode=drawing_mode,
     key="canvas",
 )
