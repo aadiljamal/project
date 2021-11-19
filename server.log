@@ -1,0 +1,31 @@
+2021-11-18 11:06:25.828295: I tensorflow_serving/model_servers/server.cc:89] Building single TensorFlow model file config:  model_name: fashion_model model_base_path: /home/aadil_jamal/Desktop/project/modelpoints
+2021-11-18 11:06:25.865954: I tensorflow_serving/model_servers/server_core.cc:465] Adding/updating models.
+2021-11-18 11:06:25.866124: I tensorflow_serving/model_servers/server_core.cc:591]  (Re-)adding model: fashion_model
+2021-11-18 11:06:25.975304: I tensorflow_serving/core/basic_manager.cc:740] Successfully reserved resources to load servable {name: fashion_model version: 1}
+2021-11-18 11:06:25.975435: I tensorflow_serving/core/loader_harness.cc:66] Approving load for servable version {name: fashion_model version: 1}
+2021-11-18 11:06:25.975506: I tensorflow_serving/core/loader_harness.cc:74] Loading servable version {name: fashion_model version: 1}
+2021-11-18 11:06:25.998395: E tensorflow_serving/util/retrier.cc:37] Loading servable: {name: fashion_model version: 1} failed: NOT_FOUND: Specified file path does not appear to contain a SavedModel bundle (should have a file called `saved_model.pb`)
+Specified file path: /home/aadil_jamal/Desktop/project/modelpoints/1
+2021-11-18 11:07:25.998620: I tensorflow_serving/util/retrier.cc:33] Retrying of Loading servable: {name: fashion_model version: 1} retry: 1
+2021-11-18 11:07:25.998894: E tensorflow_serving/util/retrier.cc:37] Loading servable: {name: fashion_model version: 1} failed: NOT_FOUND: Specified file path does not appear to contain a SavedModel bundle (should have a file called `saved_model.pb`)
+Specified file path: /home/aadil_jamal/Desktop/project/modelpoints/1
+2021-11-18 11:08:25.999130: I tensorflow_serving/util/retrier.cc:33] Retrying of Loading servable: {name: fashion_model version: 1} retry: 2
+2021-11-18 11:08:25.999408: E tensorflow_serving/util/retrier.cc:37] Loading servable: {name: fashion_model version: 1} failed: NOT_FOUND: Specified file path does not appear to contain a SavedModel bundle (should have a file called `saved_model.pb`)
+Specified file path: /home/aadil_jamal/Desktop/project/modelpoints/1
+2021-11-18 11:09:25.999717: I tensorflow_serving/util/retrier.cc:33] Retrying of Loading servable: {name: fashion_model version: 1} retry: 3
+2021-11-18 11:09:25.999988: E tensorflow_serving/util/retrier.cc:37] Loading servable: {name: fashion_model version: 1} failed: NOT_FOUND: Specified file path does not appear to contain a SavedModel bundle (should have a file called `saved_model.pb`)
+Specified file path: /home/aadil_jamal/Desktop/project/modelpoints/1
+2021-11-18 11:10:26.000230: I tensorflow_serving/util/retrier.cc:33] Retrying of Loading servable: {name: fashion_model version: 1} retry: 4
+2021-11-18 11:10:26.000517: E tensorflow_serving/util/retrier.cc:37] Loading servable: {name: fashion_model version: 1} failed: NOT_FOUND: Specified file path does not appear to contain a SavedModel bundle (should have a file called `saved_model.pb`)
+Specified file path: /home/aadil_jamal/Desktop/project/modelpoints/1
+2021-11-18 11:11:26.000850: I tensorflow_serving/util/retrier.cc:33] Retrying of Loading servable: {name: fashion_model version: 1} retry: 5
+2021-11-18 11:11:26.001130: E tensorflow_serving/util/retrier.cc:37] Loading servable: {name: fashion_model version: 1} failed: NOT_FOUND: Specified file path does not appear to contain a SavedModel bundle (should have a file called `saved_model.pb`)
+Specified file path: /home/aadil_jamal/Desktop/project/modelpoints/1
+2021-11-18 11:11:26.001301: I tensorflow_serving/util/retrier.cc:46] Retrying of Loading servable: {name: fashion_model version: 1} exhausted max_num_retries: 5
+2021-11-18 11:11:26.001503: I tensorflow_serving/core/loader_harness.cc:155] Encountered an error for servable version {name: fashion_model version: 1}: NOT_FOUND: Specified file path does not appear to contain a SavedModel bundle (should have a file called `saved_model.pb`)
+Specified file path: /home/aadil_jamal/Desktop/project/modelpoints/1
+2021-11-18 11:11:26.001638: E tensorflow_serving/core/aspired_versions_manager.cc:386] Servable {name: fashion_model version: 1} cannot be loaded: NOT_FOUND: Specified file path does not appear to contain a SavedModel bundle (should have a file called `saved_model.pb`)
+Specified file path: /home/aadil_jamal/Desktop/project/modelpoints/1
+2021-11-18 11:11:26.971046: I tensorflow_serving/core/basic_manager.cc:279] Unload all remaining servables in the manager.
+Failed to start server. Error: UNKNOWN: 1 servable(s) did not become available: {{{name: fashion_model version: 1} due to error: NOT_FOUND: Specified file path does not appear to contain a SavedModel bundle (should have a file called `saved_model.pb`)
+Specified file path: /home/aadil_jamal/Desktop/project/modelpoints/1}, }
