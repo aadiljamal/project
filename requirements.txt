@@ -1,7 +1,7 @@
 pandas==1.2.3
 streamlit==0.85.0
 streamlit_drawable_canvas==0.7.0
-numpy
+Keras-Preprocessing==1.1.2
 pillow==8.2.0
 google-cloud-firestore==2.2.0
 firebase_admin==5.0.1
@@ -9,5 +9,5 @@ matplotlib
 pybase64==1.1.4
 plotly==5.3.1
 tensorflow==2.6.0
-
+keras==2.7.0 
 
