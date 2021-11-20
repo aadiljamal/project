@@ -136,7 +136,7 @@ if  (canvas_result.image_data is not  None) and realtime_update == True  :
     # ... do stuff with dirpath        
     X = (Image.fromarray((canvas_result.image_data).astype(np.uint8))).save(f'{dirpath}/{filename}.png') 
     #os.system(cmd)
-    test_image = load_img((f'{dirpath}/{filename}.png'), target_size = (224, 224)) 
+    test_image = X  #load_img((f'{dirpath}/{filename}.png'), target_size = (224, 224)) 
     test_image = img_to_array(test_image)
     #test_image = np.expand_dims(test_image, axis = 0)
     save_img(f'{dirpath}/{filename}con.png',test_image)
