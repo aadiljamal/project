@@ -218,7 +218,7 @@ if  (canvas_result.image_data is not  None) and realtime_update == True  :
       results = np.squeeze(output_data)
       st.line_chart(results, width=0, height=0, use_container_width=True)
 
-      top_k = results.argsort()[-4:][::-1]
+      top_k = results.argsort()[-5:][::-1]
       st.write(top_k[0])
       st.write(top_k)
       labels = load_labels(args.label_file)
@@ -243,8 +243,6 @@ if  (canvas_result.image_data is not  None) and realtime_update == True  :
 else:      
   st.write("canvas is empty",size=20)
 
-#Aatif code goes here============
-st.header("test html import")
 
 
       
