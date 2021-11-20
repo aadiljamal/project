@@ -1,8 +1,8 @@
 #TF is the main ML/AI library and keras is its high level api
 from numpy.core.fromnumeric import size
-from keras.preprocessing.image import load_img
-from keras.preprocessing.image import save_img
-from keras.preprocessing.image import img_to_array
+#from keras.preprocessing.image import load_img
+#from keras.preprocessing.image import save_img
+#from keras.preprocessing.image import img_to_array
 
 
 #argparse and time will be used to fetch labels from the .tflite file
