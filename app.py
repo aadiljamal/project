@@ -1,7 +1,7 @@
 #TF is the main ML/AI library and keras is its high level api
 from numpy.core.fromnumeric import size
 #from keras.preprocessing.image import load_img
-#from keras.preprocessing.image import save_img
+from keras.preprocessing.image import save_img
 #from keras.preprocessing.image import img_to_array
 
 
@@ -139,7 +139,7 @@ if  (canvas_result.image_data is not  None) and realtime_update == True  :
     test_image = X #load_img((f'{dirpath}/{filename}.png'), target_size = (224, 224)) 
     test_image = X#img_to_array(test_image)
     #test_image = np.expand_dims(test_image, axis = 0)
-    save_img(f'{dirpath}/{filename}con.png',test_image)
+    save_img(f'{dirpath}/{filename}con.png',X)
     upload_blob('mitr-data-bucket',(f'{dirpath}/{filename}.png') ,'test')
     st.write("type:",test_image.dtype)
 
