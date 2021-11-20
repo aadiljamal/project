@@ -141,7 +141,7 @@ if  (canvas_result.image_data is not  None) and realtime_update == True  :
     #test_image = np.expand_dims(test_image, axis = 0)
     #(Image.fromarray((canvas_result.image_data).astype(np.uint8))).save(f'{dirpath}/{filename}con.png)
     upload_blob('mitr-data-bucket',(f'{dirpath}/{filename}.png') ,'test')
-    st.write("type:",test_image.dtype)
+    #st.write("type:",test_image.dtype)
 
     #predict the result
     #result = model.predict(test_image)  
