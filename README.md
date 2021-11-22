@@ -29,7 +29,7 @@ All training related code is contained in the Mitr_training jupyter notebook fil
 
 I got following batch loss and accuracy results during training.
 
-
+![alt text](https://drive.google.com/file/d/1lPnMH6hGcGmf8cu412dFDafDPeo7KZAb/view?usp=sharing)
 
 
 
