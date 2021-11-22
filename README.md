@@ -69,9 +69,9 @@ Cloud services for saving new image drawn by the used you can use any of your fa
 Few Secreenshot of the app goes here
 
 
-[!Canvas for Drawing](https://storage.googleapis.com/mitr-data-bucket/mitr-data-bucket/testfiles/canvas.png)
-[!graph comparing the type of catagory of sketch](https://storage.googleapis.com/mitr-data-bucket/mitr-data-bucket/testfiles/graph1.png)
-[!graph showing the traits of the person as per class of  drawing](https://storage.googleapis.com/mitr-data-bucket/mitr-data-bucket/testfiles/graph2.png)
+![Canvas for Drawing](https://storage.googleapis.com/mitr-data-bucket/mitr-data-bucket/testfiles/canvas.png)
+![graph comparing the type of catagory of sketch](https://storage.googleapis.com/mitr-data-bucket/mitr-data-bucket/testfiles/graph1.png)
+![graph showing the traits of the person as per class of  drawing](https://storage.googleapis.com/mitr-data-bucket/mitr-data-bucket/testfiles/graph2.png)
 
 
 
