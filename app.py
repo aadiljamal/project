@@ -63,8 +63,8 @@ st.balloons()
 
 #saving filename typed in the text field
 filename = st.text_input("Drawing_name",help="Enter Drawing Name in the textfield below.")
-components.html(f""" <html><meta name="viewport" content="width=device-width, initial-scale=1"><body style="color:red; text-align:center"> I am requesting you to be a part of my project by drawing doodle Man_in_the_Rain</body></html>""",  height=50)
-link = '[Man_in_the_Rain](https://brightside.me/wonder-quizzes/this-draw-a-person-in-the-rain-test-will-reveal-your-true-self-271710/)'
+components.html(f""" <html><meta name="viewport" content="width=device-width, initial-scale=1"><body style="color:red; text-align:center">Please Draw a doodle Man_in_the_Rain in short MITR</body></html>""",  height=50)
+link = '[MITR fun facts,Dont check before the drawing](https://brightside.me/wonder-quizzes/this-draw-a-person-in-the-rain-test-will-reveal-your-true-self-271710/)'
 redirect = st.markdown(link, unsafe_allow_html=True)
 #st.image('example.jpg')
 
@@ -215,29 +215,32 @@ if  (canvas_result.image_data is not  None) and realtime_update == True  :
       st.line_chart(results, width=0, height=0, use_container_width=True)
 
       top_k = results.argsort()[-5:][::-1]
-      st.write(top_k[0])
-      st.write(top_k)
-      labels = load_labels(args.label_file)
-      #Creating result data from the analysis_csv file
-      dashboard_data = analysis.iloc[[top_k[0] ]]
-      #using builtin area_chart function of streamlit
-      chart_data = pd.DataFrame(dashboard_data,
-        columns = ["Protective_Mechanisms","Professional_Growth", "Confront_Difficult_Situations","Adaptation","Insecurity","Problem_Solving"])
-      st.bar_chart(chart_data)
-      df = chart_data
-      # Here we use a column with categorical data
-      fig = px.histogram(df)
-      st.plotly_chart(fig)
-      for i in top_k:
-        if floating_model:
-          st.write('{:08.6f}: {}'.format(float(results[i]), labels[i]))
-        else:
-          st.write('{:08.6f}: {}'.format(float(results[i] / 255.0), labels[i]))
+      if top_k[0] == 4:
+        st.write("The sketch drawn is either empty or our model is not predicting this type of sketch image \n Try with MITR drawing", size=20)
+      else:
+        st.write(top_k[0])
+        st.write(top_k)
+        labels = load_labels(args.label_file)
+        #Creating result data from the analysis_csv file
+        dashboard_data = analysis.iloc[[top_k[0] ]]
+        #using builtin area_chart function of streamlit
+        chart_data = pd.DataFrame(dashboard_data,
+          columns = ["Protective_Mechanisms","Professional_Growth", "Confront_Difficult_Situations","Adaptation","Insecurity","Problem_Solving"])
+        st.bar_chart(chart_data)
+        df = chart_data
+        # Here we use a column with categorical data
+        fig = px.histogram(df)
+        st.plotly_chart(fig)
+        for i in top_k:
+          if floating_model:
+            st.write('{:08.6f}: {}'.format(float(results[i]), labels[i]))
+          else:
+            st.write('{:08.6f}: {}'.format(float(results[i] / 255.0), labels[i]))
 
-      st.write('time: {:.3f}ms'.format((stop_time - start_time) * 1000))  
-      st.write("Thank you to be a part of our testing and  datacollection process")
+        st.write('time: {:.3f}ms'.format((stop_time - start_time) * 1000))  
+        st.write("Thank you to be a part of our testing and  datacollection process",size=21)
 else:      
-  st.write("canvas is empty",size=20)
+  st.write("canvas is empty or checkbox is not checked",size=20)
 
 
 
