@@ -3,7 +3,7 @@ You can check it here
 https://share.streamlit.io/aadiljamal/project/main/app.py
 
 This was my final year project based on MITR test, it is an art therapy test where the person is asked to drawn a man in the rain
-Then according to the survey done on the south Korean university and by South korean army for military life adjustment.Art therapy uses drawing to interpret the subconcious mind of human
+Then according to the survey done on the Japanese university and by South korean army for military life adjustment.Art therapy uses drawing to interpret the subconcious mind of human
 Pictures speak lot about person than words because images contain lot of information of person for our case MITR drawing drawn by a person can speak about his subconcious as per this table.
 Note the below interpretation is based on survey and data collected only , so please consider it my version of analysis you are welcome to correct incase it not so right.
 
